@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 
-int _printchar(char c);
+int _printchar(int c);
 int _printstring(char *s);
 int _printf(const char *format, ...);
 #endif

@@ -1,45 +1,39 @@
-#include <stdio.h>
-#include "variadic_functions.h"
-#include <stdarg.h>
-/**
- *print_all - prints a name as is
- * @format: ...
- * Return: Nothing.
- */
-void print_all(const char * const format, ...)
-{
-unsigned int i = 0;
-va_list args;
-char *x;
+#include "main.h"
 
-va_start(args, format);
-while (format != NULL && format[i] != '\0')
+/**
+ * _printchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int _printchar(int c)
 {
-	switch (format[i])
-	{
-		case 'c':
-			printf("%c", va_arg(args, int));
-			break;
-		case 'i':
-			printf("%d", va_arg(args, int));
-			break;
-		case 'f':
-			printf("%f", va_arg(args, double));
-			break;
-		case 's':
-			x = va_arg(args, char*);
-			if (x == NULL)
-				x = "(nil)";
-			printf("%s", x);
-			break;
-		default:
-			i++;
-			continue;
-	}
-	if (format[i + 1] != '\0')
-		printf(", ");
+	return (write(1, &c, 1));
+}
+
+/**
+ * _printstring - writes the character c to stdout
+ * @s: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int _printstring(char *s)
+{
+int i = 0;
+int len = 0;
+/*if (s == NULL)
+{
+	s = "(Null)";
+}*/
+while (s[len] != '\0')
+	len++;
+
+while (i < len)
+{
+_printchar(s[i]);
 i++;
 }
-va_end(args);
-printf("\n");
+return (len);
 }

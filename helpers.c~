@@ -23,10 +23,10 @@ int _printstring(char *s)
 {
 int i = 0;
 int len = 0;
-/*if (s == NULL)
+if (s == NULL)
 {
 	s = "(Null)";
-}*/
+}
 while (s[len] != '\0')
 	len++;
 
